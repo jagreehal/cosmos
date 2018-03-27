@@ -7,11 +7,12 @@ import Section from '../ov-components/section'
 import Example from '../ov-components/example'
 
 /* TODO: Extract ClientList as a local component in manage/components */
-/* TODO: Extract ConnectionsList as a local component in manage/components */
 
-import { List, Button, ButtonGroup, Code, Link, Stack, Switch, Icon, Thumbnail } from 'auth0-cosmos'
+import { List, Button, ButtonGroup, Code, Link, Stack, Thumbnail } from 'auth0-cosmos'
 
 import ClientTypeImages from '../../manage/components/client-types-images'
+import ConnectionListRow from '../../manage/components/connection-list-row'
+
 const clients = [
   {
     id: 'apXVn76xBT7WougWj17MGXHSthfrBB',
@@ -77,38 +78,12 @@ const Type = styled.div`
   text-transform: uppercase;
 `
 
-// TODO: Remove the ConnectionType component and maybe do a flag component
-const ConnectionType = styled.div`
-  span {
-    display: inline-block;
-    vertical-align: middle;
-  }
-`
-
 const ListsExample = () => (
   <Section>
     <Example title="List of Connections">
       <List label="Social">
-        <Stack align="fill" widths={[60, 40, 20]}>
-          <div>github</div>
-          <ConnectionType>
-            <Icon size={16} name="" />
-            <span>GitHub</span>
-          </ConnectionType>
-          <Stack align="right">
-            <Switch accessibleLabels={[]} />
-          </Stack>
-        </Stack>
-        <Stack align="fill" widths={[60, 40, 20]}>
-          <div>google-oauth2</div>
-          <ConnectionType>
-            <Icon size={16} name="" />
-            <span>Google</span>
-          </ConnectionType>
-          <Stack align="right">
-            <Switch accessibleLabels={[]} />
-          </Stack>
-        </Stack>
+        <ConnectionListRow name="github" connection="GitHub" switchOn />
+        <ConnectionListRow name="google-oauth2" connection="Google" />
       </List>
     </Example>
 
